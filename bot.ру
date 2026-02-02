@@ -2,7 +2,10 @@ import os
 import logging
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
-
+print("=== BOT BOOT ===")
+print("Python OK. CWD:", os.getcwd())
+print("Files:", os.listdir("."))
+print("BOT_TOKEN present:", bool(os.getenv("BOT_TOKEN")))
 # Логи
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -29,6 +32,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
+print("=== START POLLING ===")
     app.run_polling()
 
 if __name__ == "__main__":
